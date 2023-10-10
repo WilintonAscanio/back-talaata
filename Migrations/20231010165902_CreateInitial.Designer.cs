@@ -11,7 +11,7 @@ using backTalaata.Data;
 namespace backTalaata.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231009220801_CreateInitial")]
+    [Migration("20231010165902_CreateInitial")]
     partial class CreateInitial
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace backTalaata.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("backTalaata.Employee", b =>
+            modelBuilder.Entity("backTalaata.Models.Employee", b =>
                 {
                     b.Property<int>("employeeID")
                         .ValueGeneratedOnAdd()

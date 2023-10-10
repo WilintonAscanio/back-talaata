@@ -11,7 +11,7 @@ namespace backTalaata.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Employees",
+                name: "tblEmployees",
                 columns: table => new
                 {
                     employeeID = table.Column<int>(type: "int", nullable: false)
@@ -34,7 +34,7 @@ namespace backTalaata.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "tblEmployees");
         }
     }
 }

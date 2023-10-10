@@ -21,7 +21,7 @@ namespace backTalaata.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("backTalaata.Employee", b =>
+            modelBuilder.Entity("backTalaata.Models.Employee", b =>
                 {
                     b.Property<int>("employeeID")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace backTalaata.Migrations
 
                     b.HasKey("employeeID");
 
-                    b.ToTable("Employees");
+                    b.ToTable("tblEmployees");
                 });
 #pragma warning restore 612, 618
         }

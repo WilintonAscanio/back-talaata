@@ -20,13 +20,13 @@ namespace backTalaata.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Employee>>> GetEmployee()
         {
-            return Ok(await _context.Employees.ToListAsync());
+            return Ok(await _context.tblEmployees.ToListAsync());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<List<Employee>>> GetEmployeeById(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _context.tblEmployees.FindAsync(id);
             if (employee == null)
                 return BadRequest("Employee not found");
             return Ok(employee);
@@ -35,34 +35,36 @@ namespace backTalaata.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Employee>>> AddEmployee(Employee employee)
         {
-            _context.Employees.Add(employee);
+            _context.tblEmployees.Add(employee);
             await _context.SaveChangesAsync();
-            return Ok(await _context.Employees.ToListAsync());
+            return Ok(await _context.tblEmployees.ToListAsync());
         }
 
         [HttpPut]
         public async Task<ActionResult<List<Employee>>> UpdateEmployee(Employee request)
         {
-            var employee = GetEmployeeById(request.employeeID);
+            var employee = await _context.tblEmployees.FindAsync(request.employeeID);
+            if (employee == null)
+                return BadRequest("Employee not found");
 
             // Actualiza las propiedades de 'employee' con los valores de 'request'
             _context.Entry(employee).CurrentValues.SetValues(request);
 
             await _context.SaveChangesAsync();
-            return Ok(await _context.Employees.ToListAsync());
+            return Ok(await _context.tblEmployees.ToListAsync());
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Employee>> Delete(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _context.tblEmployees.FindAsync(id);
             if (employee == null)
             {
                 return BadRequest("Employee not found");
             }
-            _context.Employees.Remove(employee);
+            _context.tblEmployees.Remove(employee);
             await _context.SaveChangesAsync();
-            return Ok(await _context.Employees.ToListAsync());
+            return Ok(await _context.tblEmployees.ToListAsync());
         }
     }
 }
